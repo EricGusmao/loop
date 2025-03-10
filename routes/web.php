@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\BucketCardController;
+use App\Http\Controllers\BucketController;
+use App\Http\Controllers\BucketStudyController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -8,9 +11,9 @@ Route::get('/', function () {
 })->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
-    })->name('dashboard');
+    Route::resource('buckets', BucketController::class);
+    Route::get('buckets/{bucket}/study', [BucketStudyController::class, 'index'])->name('buckets.study');
+    Route::scopeBindings()->resource('buckets.cards', BucketCardController::class)->only(['store', 'update', 'destroy']);
 });
 
 require __DIR__.'/settings.php';

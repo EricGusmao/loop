@@ -40,3 +40,21 @@ export interface User {
     updated_at: string;
     [key: string]: unknown; // This allows for additional properties...
 }
+
+export interface Bucket {
+    id: number;
+    title: string;
+    cards: CardEntity[];
+    created_at: string;
+    updated_at: string;
+    cards_count: number;
+}
+
+export interface CardEntity {
+    id: number;
+    front: string;
+    back: string;
+    bucket_id: number;
+    created_at: string;
+    updated_at: string;
+}
