@@ -32,7 +32,7 @@ export default function Show({ bucket }: { bucket: Bucket }) {
                     </div>
                     <div className="mt-0 ml-4 flex">
                         <AddCard bucketId={bucket.id} />
-                        <Link href={route('buckets.study', [bucket.id])} className="ml-2" prefetch>
+                        <Link href={route('buckets.study', [bucket.id])} className="ml-2">
                             <Button variant={'secondary'}>Study</Button>
                         </Link>
                     </div>
