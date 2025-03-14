@@ -64,14 +64,16 @@ class BucketController extends Controller
 
         $validated = $request->validate([
             'title' => [
-                'required|string|max:255',
+                'required',
+                'string',
+                'max:255',
                 $user->unique('buckets', 'title')->ignoreModel($bucket),
             ],
         ]);
 
         $bucket->update($validated);
 
-        return to_route('buckets.show', [$bucket]);
+        return to_route('buckets.index');
     }
 
     /**

@@ -22,6 +22,7 @@ class BucketStudyController extends Controller
 
         return Inertia::render('buckets/study', [
             'cards' => $shuffledCards,
+            'bucket' => $bucket,
         ]);
     }
 }
